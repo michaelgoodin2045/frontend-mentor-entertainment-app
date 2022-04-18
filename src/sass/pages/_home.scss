@@ -1,0 +1,40 @@
+@use '../base/' as *;
+@use '../abstracts/' as a;
+
+body {
+  min-width: 100vw;
+  min-height: 100vh;
+  font-family: $ff--outfit;
+  background: $rich-black-fogra-29;
+  color: white;
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
+  }
+}
+
+.container {
+  width: 100vw;
+  height: fit-content;
+  padding-bottom: 60px;
+  @include a.breakpoint(tablet) {
+    padding-bottom: 38px;
+  }
+  @include a.breakpoint(desktop) {
+    padding-bottom: 52px;
+  }
+}
+
+.home {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  @include a.breakpoint(desktop) {
+    & .home-display {
+      margin-left: 8rem;
+    }
+  }
+}

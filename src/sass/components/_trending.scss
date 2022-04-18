@@ -1,0 +1,85 @@
+@use '../base/' as *;
+@use '../abstracts/' as a;
+
+.trending {
+  margin-top: 24px;
+  margin-left: 1rem;
+  & .carousel {
+    cursor: grab;
+    overflow: hidden;
+    margin-top: 1rem;
+    & .inner-carousel {
+      display: flex;
+      & .trending-item {
+        min-width: 240px;
+        height: 140px;
+        position: relative;
+        &:hover::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.2);
+          border-radius: 8px;
+        }
+        & + .trending-item {
+          margin-left: 1rem;
+        }
+        & .item-img {
+          & img {
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+            pointer-events: none;
+          }
+          & .play-box {
+            @include a.play;
+          }
+        }
+        & .bookmark-box {
+          @include a.bookmark(8px);
+          & img {
+            zoom: 5%;
+          }
+        }
+        & .item-info {
+          position: absolute;
+          bottom: 16px;
+          left: 16px;
+          @include a.item-info;
+        }
+      }
+    }
+  }
+  @include a.breakpoint(tablet) {
+    margin-top: 2rem;
+    margin-left: 1.5rem;
+    & .carousel {
+      height: fit-content;
+      margin-top: 1.5rem;
+      & .inner-carousel {
+        height: fit-content;
+        & .trending-item {
+          min-width: 470px;
+          height: 232px;
+          & + .trending-item {
+            margin-left: 2.5rem;
+          }
+          & .bookmark-box {
+            @include a.bookmark(24px);
+          }
+          & .item-info {
+            bottom: 24px;
+            left: 24px;
+          }
+        }
+      }
+    }
+  }
+  @include a.breakpoint(desktop) {
+    margin-left: 2.25rem;
+    margin-top: 1.5rem;
+  }
+}
